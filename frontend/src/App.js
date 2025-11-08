@@ -118,10 +118,11 @@ function App() {
   };
 
   const resetDialog = () => {
-    setOrderForm({ customer_name: "", customer_email: "" });
+    setOrderForm({ customer_name: "", customer_email: "", payment_method: "", transaction_hash: "" });
     setPurchaseComplete(false);
     setLicenseKey("");
     setSelectedProduct(null);
+    setShowPaymentDetails(false);
   };
 
   if (loading) {
