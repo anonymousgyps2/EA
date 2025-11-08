@@ -144,16 +144,16 @@ function App() {
           <div className="text-center space-y-8">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40 px-4 py-1.5 text-sm" data-testid="hero-badge">
               <Activity className="w-4 h-4 inline mr-2" />
-              Fully Automated Trading System
+              Crypto Payments Only - Instant Delivery
             </Badge>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight" data-testid="hero-title">
-              High-Performance
+              Professional MT4/MT5
               <span className="block bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
-                Scalping EA Bot
+                Scalping Expert Advisors
               </span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed" data-testid="hero-description">
-              Professional-grade Expert Advisor for MT4 & MT5. Start with just $50 and leverage advanced algorithms to capture micro-movements in the market with exceptional precision.
+              Choose your risk level and start automated trading with our proven EAs. From conservative growth to aggressive profits - we have the perfect solution for every trader.
             </p>
             <div className="flex flex-wrap gap-4 justify-center items-center">
               <Button 
@@ -163,18 +163,24 @@ function App() {
                 data-testid="get-started-btn"
               >
                 <TrendingUp className="w-5 h-5 mr-2" />
-                Get Started Now
+                View EA Packages
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-slate-600 text-slate-200 hover:bg-slate-800 px-8 py-6 text-lg rounded-full"
-                onClick={() => document.getElementById('performance')?.scrollIntoView({ behavior: 'smooth' })}
-                data-testid="view-performance-btn"
+            </div>
+            <div className="mt-8 flex items-center justify-center gap-3 text-slate-300">
+              <span className="text-sm">Need Support?</span>
+              <a 
+                href="https://t.me/hchdjd" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-slate-700/50 transition-all"
+                data-testid="telegram-support-link"
               >
-                <BarChart3 className="w-5 h-5 mr-2" />
-                View Performance
-              </Button>
+                <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                </svg>
+                <span className="font-medium">@hchdjd</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
