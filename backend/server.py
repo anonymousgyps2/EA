@@ -133,7 +133,7 @@ async def create_order(order_input: OrderCreate):
     license_key = f"EA-{secrets.token_urlsafe(16).upper()}"
     
     order_dict = order_input.model_dump()
-    order_obj = Order(**order_dict, license_key=license_key, status="completed")
+    order_obj = Order(**order_dict, license_key=license_key, status="pending")
     
     doc = order_obj.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
