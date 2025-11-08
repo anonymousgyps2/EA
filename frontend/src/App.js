@@ -380,47 +380,55 @@ function App() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 bg-slate-900/30" data-testid="faq-section">
+      <section className="py-20 px-6" data-testid="faq-section">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="faq-title">Frequently Asked Questions</h2>
-            <p className="text-lg text-slate-400">Everything you need to know about ScalpMaster Pro EA</p>
+            <p className="text-lg text-slate-400">Everything you need to know about our EAs</p>
           </div>
           <Accordion type="single" collapsible className="space-y-4">
             <AccordionItem value="item-1" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-1">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What is a Scalping EA?</AccordionTrigger>
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What's the difference between the three EA packages?</AccordionTrigger>
               <AccordionContent className="text-slate-400">
-                A Scalping Expert Advisor (EA) is an automated trading robot that executes rapid trades to profit from small price movements. Our EA uses advanced algorithms to identify high-probability trading opportunities and execute trades with precision timing.
+                <strong className="text-white">Low Risk EA ($90):</strong> Conservative strategy with 1% risk per trade, 6.5% monthly returns, 89.2% win rate. Best for beginners and capital preservation.<br/><br/>
+                <strong className="text-white">Moderate Risk EA ($150):</strong> Balanced approach with 2% risk per trade, 15.2% monthly returns, 85.7% win rate. Ideal for steady growth.<br/><br/>
+                <strong className="text-white">High Risk EA ($200):</strong> Aggressive strategy with 3-5% risk per trade, 32.8% monthly returns, 82.4% win rate. For experienced traders seeking maximum profits.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-2">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">Do I need trading experience?</AccordionTrigger>
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What cryptocurrencies do you accept?</AccordionTrigger>
               <AccordionContent className="text-slate-400">
-                No trading experience required! The EA is fully automated and handles all trading decisions. Simply install it on your MT4/MT5 platform, configure your risk parameters, and let it trade for you. We provide detailed setup instructions and 24/7 support.
+                We accept USDT (TRC20), USDT (BEP20), TRX (Tron), BTC (Bitcoin), ETH (Ethereum), and BNB (Binance Coin). After selecting your EA package, choose your preferred cryptocurrency, send payment to the displayed wallet address, and submit your transaction hash.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-3">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What's the minimum deposit required?</AccordionTrigger>
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">How long does delivery take?</AccordionTrigger>
               <AccordionContent className="text-slate-400">
-                You can start with as little as $50. However, we recommend $200-500 for optimal performance and better risk management. The EA automatically adjusts position sizes based on your account balance.
+                EA files are delivered to your email within 24 hours after we verify your crypto payment. You'll receive installation instructions, setup guide, and your license key via email. For urgent delivery, contact us on Telegram @hchdjd.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-4">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">How do I install the EA?</AccordionTrigger>
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">Do I need trading experience?</AccordionTrigger>
               <AccordionContent className="text-slate-400">
-                Installation is simple: 1) Download the EA file after purchase, 2) Copy it to your MT4/MT5 'Experts' folder, 3) Restart your trading platform, 4) Drag the EA onto your chart. We provide a detailed installation guide and video tutorial with your purchase.
+                No experience required! All our EAs are fully automated. Simply install on MT4/MT5, configure your risk settings (we provide recommended settings), and the EA handles everything. We include a detailed setup guide and offer support via Telegram @hchdjd.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-5">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What's your refund policy?</AccordionTrigger>
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">How do I install the EA?</AccordionTrigger>
               <AccordionContent className="text-slate-400">
-                We offer a 30-day money-back guarantee. If you're not satisfied with the EA's performance or encounter any issues, contact our support team for a full refund. No questions asked.
+                Simple 4-step process: 1) Download the EA file from your email, 2) Copy it to your MT4/MT5 'Experts' folder, 3) Restart your trading platform, 4) Drag the EA onto your chart and enable auto-trading. Full video tutorial included with purchase. Support available on Telegram @hchdjd.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-6" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-6">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">Are updates included?</AccordionTrigger>
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What if I need help or have issues?</AccordionTrigger>
               <AccordionContent className="text-slate-400">
-                Yes! All future updates are included with your one-time purchase. We continuously improve the EA's algorithms and add new features. You'll receive lifetime access to all updates at no additional cost.
+                Contact us directly on Telegram @hchdjd for instant support. We help with installation, configuration, optimization, and any technical issues. Our support team responds quickly and ensures you get the most out of your EA.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-7" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-7">
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">Can I use one EA on multiple accounts?</AccordionTrigger>
+              <AccordionContent className="text-slate-400">
+                Each license covers one MT4/MT5 account. If you need to use the EA on multiple accounts, contact us on Telegram @hchdjd for multi-license discounts. We offer special pricing for traders managing multiple accounts.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
