@@ -440,7 +440,7 @@ function App() {
         setOrderDialogOpen(open);
         if (!open) resetDialog();
       }}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-white" data-testid="purchase-dialog">
+        <DialogContent className="bg-slate-900 border-slate-700 text-white max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="purchase-dialog">
           {!purchaseComplete ? (
             <>
               <DialogHeader>
@@ -465,7 +465,7 @@ function App() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="customer_email">Email Address</Label>
+                  <Label htmlFor="customer_email">Email Address (for EA delivery)</Label>
                   <Input
                     id="customer_email"
                     type="email"
@@ -476,13 +476,121 @@ function App() {
                     className="bg-slate-800 border-slate-700 text-white"
                     data-testid="input-customer-email"
                   />
+                  <p className="text-xs text-slate-500">EA files will be sent to this email within 24 hours after payment verification</p>
                 </div>
+                
+                <Separator className="bg-slate-700" />
+                
+                <div className="space-y-2">
+                  <Label htmlFor="payment_method">Select Crypto Payment Method</Label>
+                  <Select 
+                    value={orderForm.payment_method} 
+                    onValueChange={(value) => {
+                      setOrderForm({...orderForm, payment_method: value});
+                      setShowPaymentDetails(true);
+                    }}
+                  >
+                    <SelectTrigger className="bg-slate-800 border-slate-700 text-white" data-testid="select-payment-method">
+                      <SelectValue placeholder="Choose cryptocurrency..." />
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-800 border-slate-700">
+                      {PAYMENT_METHODS.map((method) => (
+                        <SelectItem key={method.value} value={method.value} className="text-white hover:bg-slate-700">
+                          <div className="flex flex-col">
+                            <span className="font-medium">{method.label}</span>
+                            <span className="text-xs text-slate-400">{method.network}</span>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {showPaymentDetails && orderForm.payment_method && (
+                  <div className="bg-slate-800/50 p-4 rounded-lg space-y-4 border border-slate-700" data-testid="payment-details">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-emerald-400">
+                        {PAYMENT_METHODS.find(m => m.value === orderForm.payment_method)?.label} Payment Details
+                      </span>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-xs text-slate-400">Wallet Address</Label>
+                      <div className="flex gap-2">
+                        <Input
+                          value={CRYPTO_WALLETS[orderForm.payment_method]}
+                          readOnly
+                          className="bg-slate-900 border-slate-600 text-white font-mono text-sm"
+                          data-testid="wallet-address"
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="icon"
+                          onClick={() => copyToClipboard(CRYPTO_WALLETS[orderForm.payment_method])}
+                          className="border-slate-600 hover:bg-slate-700"
+                          data-testid="copy-wallet-btn"
+                        >
+                          <Copy className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-xs text-slate-400">Amount to Send</Label>
+                      <div className="bg-slate-900 border border-slate-600 rounded-lg p-3">
+                        <p className="text-2xl font-bold text-white">${selectedProduct?.price} USD</p>
+                        <p className="text-xs text-slate-400 mt-1">Send the equivalent amount in {PAYMENT_METHODS.find(m => m.value === orderForm.payment_method)?.label}</p>
+                      </div>
+                    </div>
+                    <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3">
+                      <p className="text-xs text-amber-300">
+                        ⚠️ <strong>Important:</strong> Send ONLY {PAYMENT_METHODS.find(m => m.value === orderForm.payment_method)?.label} to this address. 
+                        Sending other coins may result in permanent loss.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {showPaymentDetails && (
+                  <div className="space-y-2">
+                    <Label htmlFor="transaction_hash">Transaction Hash (TXID)</Label>
+                    <Input
+                      id="transaction_hash"
+                      placeholder="0x... or txid..."
+                      value={orderForm.transaction_hash}
+                      onChange={(e) => setOrderForm({...orderForm, transaction_hash: e.target.value})}
+                      required
+                      className="bg-slate-800 border-slate-700 text-white font-mono text-sm"
+                      data-testid="input-transaction-hash"
+                    />
+                    <p className="text-xs text-slate-500">After sending payment, paste your transaction hash here</p>
+                  </div>
+                )}
+
+                <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                  <p className="text-sm text-blue-300 mb-2">
+                    <strong>Need help?</strong> Contact us on Telegram:
+                  </p>
+                  <a 
+                    href="https://t.me/hchdjd" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                    </svg>
+                    <span className="font-medium">@hchdjd</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+
                 <Button 
                   type="submit" 
                   className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 rounded-full text-lg"
                   data-testid="submit-purchase-btn"
+                  disabled={!showPaymentDetails}
                 >
-                  Complete Purchase
+                  Submit Order
                 </Button>
               </form>
             </>
@@ -491,13 +599,30 @@ function App() {
               <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle2 className="w-10 h-10 text-emerald-400" />
               </div>
-              <DialogTitle className="text-2xl mb-2">Purchase Successful!</DialogTitle>
+              <DialogTitle className="text-2xl mb-2">Order Submitted Successfully!</DialogTitle>
               <DialogDescription className="text-slate-400 mb-6">
-                Thank you for your purchase. Your license key has been sent to your email.
+                We've received your order. Your EA will be delivered to <strong className="text-white">{orderForm.customer_email}</strong> within 24 hours after payment verification.
               </DialogDescription>
               <div className="bg-slate-800 p-4 rounded-lg mb-6">
-                <p className="text-sm text-slate-400 mb-2">Your License Key:</p>
+                <p className="text-sm text-slate-400 mb-2">Your Order Reference:</p>
                 <p className="text-lg font-mono text-emerald-400 break-all" data-testid="license-key">{licenseKey}</p>
+              </div>
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-6">
+                <p className="text-sm text-blue-300 mb-2">
+                  Track your order or get support on Telegram:
+                </p>
+                <a 
+                  href="https://t.me/hchdjd" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                  </svg>
+                  <span className="font-medium">@hchdjd</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
               <Button 
                 onClick={() => setOrderDialogOpen(false)}
