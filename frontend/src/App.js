@@ -190,6 +190,10 @@ function App() {
       {performance && (
         <section id="performance" className="py-16 px-6" data-testid="performance-section">
           <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-white mb-2">Combined Performance Metrics</h3>
+              <p className="text-slate-400">Aggregated results across all EA packages</p>
+            </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <Card className="bg-slate-900/50 backdrop-blur-lg border-slate-700/50 hover:border-emerald-500/50 transition-all" data-testid="stat-card-profit">
                 <CardContent className="p-6 text-center">
