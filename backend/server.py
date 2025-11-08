@@ -70,6 +70,8 @@ class OrderCreate(BaseModel):
     customer_name: str
     customer_email: EmailStr
     amount: float
+    payment_method: str  # TRC20_USDT, BEP20_USDT, TRX, BTC, ETH, BNB
+    transaction_hash: Optional[str] = None
 
 class PerformanceMetric(BaseModel):
     model_config = ConfigDict(extra="ignore")
