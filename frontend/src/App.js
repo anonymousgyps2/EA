@@ -54,6 +54,9 @@ function App() {
   const [purchaseComplete, setPurchaseComplete] = useState(false);
   const [licenseKey, setLicenseKey] = useState("");
   const [showPaymentDetails, setShowPaymentDetails] = useState(false);
+  const [currentOrderId, setCurrentOrderId] = useState(null);
+  const [verifying, setVerifying] = useState(false);
+  const [verificationResult, setVerificationResult] = useState(null);
 
   useEffect(() => {
     fetchData();
