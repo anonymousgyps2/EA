@@ -124,12 +124,42 @@ function App() {
     setOrderDialogOpen(true);
   };
 
+  const verifyPayment = async () => {
+    if (!currentOrderId) return;
+    
+    setVerifying(true);
+    setVerificationResult(null);
+    
+    try {
+      const response = await axios.post(`${API}/orders/${currentOrderId}/verify`);
+      setVerificationResult(response.data);
+      
+      if (response.data.success) {
+        toast.success("Payment verified successfully! ✅");
+      } else {
+        toast.error(`Verification failed: ${response.data.message}`);
+      }
+    } catch (error) {
+      console.error("Verification error:", error);
+      toast.error("Verification failed. Please try again.");
+      setVerificationResult({
+        success: false,
+        message: "Verification request failed"
+      });
+    } finally {
+      setVerifying(false);
+    }
+  };
+
   const resetDialog = () => {
     setOrderForm({ customer_name: "", customer_email: "", payment_method: "", transaction_hash: "" });
     setPurchaseComplete(false);
     setLicenseKey("");
     setSelectedProduct(null);
     setShowPaymentDetails(false);
+    setCurrentOrderId(null);
+    setVerifying(false);
+    setVerificationResult(null);
   };
 
   if (loading) {
