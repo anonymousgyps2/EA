@@ -210,29 +210,87 @@ async def init_default_data():
     # Check if products exist
     existing = await db.products.find_one({})
     if not existing:
-        default_product = Product(
-            name="ScalpMaster Pro EA",
-            description="Advanced scalping algorithm designed for MT4/MT5. Uses proprietary price action analysis and multi-timeframe confluence to identify high-probability entries. Features intelligent risk management, trailing stops, and market volatility filters.",
-            price=299.00,
+        # Low Risk EA
+        low_risk_product = Product(
+            name="Low Risk EA - Stable Growth",
+            description="Conservative scalping strategy designed for traders who prioritize capital preservation. Uses strict risk management with maximum 1% risk per trade. Ideal for beginners and those building consistent profits over time.",
+            price=90.00,
             features=[
-                "Works with MT4 & MT5 platforms",
-                "Minimum deposit: $50",
-                "87.3% win rate on backtests",
-                "Automated scalping strategies",
-                "Advanced risk management",
-                "Real-time market analysis",
-                "24/7 automated trading",
-                "One-click installation",
-                "Lifetime updates included",
-                "24/7 customer support"
+                "Conservative risk management (1% per trade max)",
+                "Strict stop-loss placement (10-15 pips)",
+                "Lower trade frequency for quality over quantity",
+                "Targets 5-8% monthly returns consistently",
+                "Maximum drawdown limited to 8%",
+                "Works best in ranging and low volatility markets",
+                "Automated position sizing based on account balance",
+                "Compatible with accounts from $50-$10,000",
+                "Advanced trend filtering to avoid false signals",
+                "Works with MT4 & MT5",
+                "Lifetime updates & 24/7 support"
             ],
-            platform="Both",
+            platform="Both MT4 & MT5",
             min_deposit=50.0,
-            profit_percentage=18.5,
-            win_rate=87.3,
-            total_trades=2847
+            profit_percentage=6.5,
+            win_rate=89.2,
+            total_trades=1847
         )
-        doc = default_product.model_dump()
-        doc['created_at'] = doc['created_at'].isoformat()
-        await db.products.insert_one(doc)
-        logger.info("Default product created")
+        
+        # Moderate Risk EA
+        moderate_risk_product = Product(
+            name="Moderate Risk EA - Balanced Performance",
+            description="Balanced approach combining safety with growth potential. Uses dynamic risk management adjusting to market conditions. Perfect for traders seeking steady profits with controlled risk exposure.",
+            price=150.00,
+            features=[
+                "Balanced risk management (2% per trade max)",
+                "Dynamic stop-loss adjustment (15-25 pips)",
+                "Medium trade frequency for optimal opportunities",
+                "Targets 12-18% monthly returns",
+                "Maximum drawdown limited to 15%",
+                "Adapts to trending and ranging markets",
+                "Multi-timeframe analysis (M5, M15, H1)",
+                "Suitable for accounts from $100-$50,000",
+                "Advanced entry filtering with 3 confirmation signals",
+                "Trailing stop feature to lock in profits",
+                "Works with MT4 & MT5",
+                "Priority support & exclusive community access"
+            ],
+            platform="Both MT4 & MT5",
+            min_deposit=100.0,
+            profit_percentage=15.2,
+            win_rate=85.7,
+            total_trades=3421
+        )
+        
+        # High Risk EA
+        high_risk_product = Product(
+            name="High Risk High Profit EA - Maximum Returns",
+            description="Aggressive scalping strategy for experienced traders seeking maximum profit potential. Uses advanced algorithms to capture rapid market movements with higher position sizing. Requires strong risk tolerance and proper capital allocation.",
+            price=200.00,
+            features=[
+                "Aggressive risk management (3-5% per trade)",
+                "Wide stop-loss for market breathing room (25-40 pips)",
+                "High trade frequency to maximize opportunities",
+                "Targets 25-40% monthly returns",
+                "Maximum drawdown up to 25% (managed carefully)",
+                "Optimized for high volatility and trending markets",
+                "Multi-pair scalping across 6+ currency pairs",
+                "Recommended for accounts $200+",
+                "Lightning-fast execution with scalping optimization",
+                "Martingale recovery mode (optional, can be disabled)",
+                "Advanced news filter to avoid high-impact events",
+                "Works with MT4 & MT5",
+                "VIP support with personal account manager"
+            ],
+            platform="Both MT4 & MT5",
+            min_deposit=200.0,
+            profit_percentage=32.8,
+            win_rate=82.4,
+            total_trades=5234
+        )
+        
+        for product in [low_risk_product, moderate_risk_product, high_risk_product]:
+            doc = product.model_dump()
+            doc['created_at'] = doc['created_at'].isoformat()
+            await db.products.insert_one(doc)
+        
+        logger.info("Default products created")
