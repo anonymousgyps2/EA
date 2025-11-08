@@ -307,55 +307,72 @@ function App() {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-20 px-6" data-testid="products-section">
-        <div className="max-w-5xl mx-auto">
+      <section id="products" className="py-20 px-6 bg-slate-900/30" data-testid="products-section">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="products-title">Get Started Today</h2>
-            <p className="text-lg text-slate-400">One-time purchase. Lifetime access. No recurring fees.</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="products-title">Choose Your Trading Style</h2>
+            <p className="text-lg text-slate-400">Three risk levels. Three profit potentials. One powerful solution.</p>
           </div>
-          <div className="grid gap-8">
-            {products.map((product) => (
-              <Card key={product.id} className="bg-slate-900/60 backdrop-blur-sm border-slate-700/50 overflow-hidden" data-testid={`product-card-${product.id}`}>
-                <div className="grid md:grid-cols-2">
-                  <div className="relative h-64 md:h-auto">
-                    <img 
-                      src="https://images.unsplash.com/photo-1639825752750-5061ded5503b?q=85" 
-                      alt="Trading charts" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <Card 
+                key={product.id} 
+                className={`bg-slate-900/60 backdrop-blur-sm border-slate-700/50 overflow-hidden hover:border-emerald-500/50 transition-all hover:scale-105 ${index === 1 ? 'md:scale-105 border-emerald-500/50' : ''}`}
+                data-testid={`product-card-${product.id}`}
+              >
+                {index === 1 && (
+                  <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center py-2 font-semibold text-sm">
+                    MOST POPULAR
                   </div>
-                  <div className="p-8">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white mb-2" data-testid="product-name">{product.name}</h3>
-                        <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40" data-testid="product-platform">{product.platform}</Badge>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-4xl font-bold text-emerald-400" data-testid="product-price">${product.price}</p>
-                        <p className="text-sm text-slate-400">One-time</p>
-                      </div>
-                    </div>
-                    <p className="text-slate-300 mb-6" data-testid="product-description">{product.description}</p>
-                    <Separator className="bg-slate-700 mb-6" />
-                    <div className="space-y-3 mb-6">
-                      {product.features.slice(0, 5).map((feature, idx) => (
-                        <div key={idx} className="flex items-start gap-2" data-testid={`product-feature-${idx}`}>
-                          <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-slate-300 text-sm">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <Button 
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 rounded-full text-lg font-semibold shadow-lg shadow-emerald-500/30 transition-all hover:scale-105"
-                      onClick={() => openPurchaseDialog(product)}
-                      data-testid="buy-now-btn"
-                    >
-                      <DollarSign className="w-5 h-5 mr-2" />
-                      Purchase Now
-                    </Button>
+                )}
+                <CardHeader className="text-center pb-4">
+                  <div className="mb-4">
+                    {index === 0 && <Shield className="w-12 h-12 text-blue-400 mx-auto" />}
+                    {index === 1 && <TrendingUp className="w-12 h-12 text-emerald-400 mx-auto" />}
+                    {index === 2 && <Zap className="w-12 h-12 text-orange-400 mx-auto" />}
                   </div>
-                </div>
+                  <CardTitle className="text-2xl text-white mb-2" data-testid="product-name">{product.name}</CardTitle>
+                  <div className="text-center my-4">
+                    <p className="text-5xl font-bold text-white" data-testid="product-price">${product.price}</p>
+                    <p className="text-sm text-slate-400 mt-1">One-time payment</p>
+                  </div>
+                  <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40 mx-auto" data-testid="product-platform">{product.platform}</Badge>
+                </CardHeader>
+                <CardContent className="px-6 pb-6">
+                  <p className="text-slate-300 mb-4 text-sm text-center" data-testid="product-description">{product.description}</p>
+                  <Separator className="bg-slate-700 my-4" />
+                  <div className="space-y-2 mb-6">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-400">Min Deposit:</span>
+                      <span className="text-white font-semibold">${product.min_deposit}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-400">Monthly Return:</span>
+                      <span className="text-emerald-400 font-semibold">{product.profit_percentage}%</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-400">Win Rate:</span>
+                      <span className="text-emerald-400 font-semibold">{product.win_rate}%</span>
+                    </div>
+                  </div>
+                  <Separator className="bg-slate-700 my-4" />
+                  <div className="space-y-2 mb-6 max-h-64 overflow-y-auto">
+                    {product.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2" data-testid={`product-feature-${idx}`}>
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-300 text-xs">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button 
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 rounded-full text-lg font-semibold shadow-lg shadow-emerald-500/30 transition-all hover:scale-105"
+                    onClick={() => openPurchaseDialog(product)}
+                    data-testid="buy-now-btn"
+                  >
+                    <DollarSign className="w-5 h-5 mr-2" />
+                    Buy with Crypto
+                  </Button>
+                </CardContent>
               </Card>
             ))}
           </div>
