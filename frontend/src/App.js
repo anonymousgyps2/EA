@@ -575,6 +575,18 @@ function App() {
                         {PAYMENT_METHODS.find(m => m.value === orderForm.payment_method)?.label} Payment Details
                       </span>
                     </div>
+                    
+                    {/* QR Code Section */}
+                    <div className="flex justify-center py-4">
+                      <div className="bg-white p-4 rounded-lg">
+                        <QRCodeSVG 
+                          value={CRYPTO_WALLETS[orderForm.payment_method]} 
+                          size={200}
+                          level="H"
+                        />
+                      </div>
+                    </div>
+                    
                     <div className="space-y-2">
                       <Label className="text-xs text-slate-400">Wallet Address</Label>
                       <div className="flex gap-2">
