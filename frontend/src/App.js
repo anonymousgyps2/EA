@@ -232,8 +232,8 @@ function App() {
       <section className="py-20 px-6" data-testid="features-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="features-title">Why Choose ScalpMaster Pro?</h2>
-            <p className="text-lg text-slate-400">Advanced technology meets proven trading strategies</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="features-title">Why Choose Our EAs?</h2>
+            <p className="text-lg text-slate-400">Professional trading automation for every risk profile</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="bg-slate-900/60 backdrop-blur-sm border-slate-700/50 hover:border-emerald-500/50 transition-all hover:scale-105" data-testid="feature-card-platform">
@@ -243,18 +243,18 @@ function App() {
                 </div>
                 <CardTitle className="text-white">MT4 & MT5 Compatible</CardTitle>
                 <CardDescription className="text-slate-400">
-                  Seamlessly integrates with both MetaTrader 4 and MetaTrader 5 platforms. One-click installation, no technical expertise required.
+                  Works seamlessly with both MetaTrader platforms. Simple drag-and-drop installation.
                 </CardDescription>
               </CardHeader>
             </Card>
-            <Card className="bg-slate-900/60 backdrop-blur-sm border-slate-700/50 hover:border-emerald-500/50 transition-all hover:scale-105" data-testid="feature-card-deposit">
+            <Card className="bg-slate-900/60 backdrop-blur-sm border-slate-700/50 hover:border-emerald-500/50 transition-all hover:scale-105" data-testid="feature-card-crypto">
               <CardHeader>
                 <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4">
                   <DollarSign className="w-6 h-6 text-emerald-400" />
                 </div>
-                <CardTitle className="text-white">Low Entry Barrier</CardTitle>
+                <CardTitle className="text-white">Crypto Payments Only</CardTitle>
                 <CardDescription className="text-slate-400">
-                  Start trading with as little as $50. Our optimized risk management makes professional trading accessible to everyone.
+                  Accept USDT (TRC20/BEP20), BTC, ETH, BNB, and TRX for instant, secure transactions.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -265,7 +265,7 @@ function App() {
                 </div>
                 <CardTitle className="text-white">Fully Automated</CardTitle>
                 <CardDescription className="text-slate-400">
-                  Set it and forget it. Our EA runs 24/7, analyzing markets and executing trades while you sleep or focus on other things.
+                  24/7 automated trading. No manual intervention required once configured.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -274,20 +274,20 @@ function App() {
                 <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4">
                   <Clock className="w-6 h-6 text-emerald-400" />
                 </div>
-                <CardTitle className="text-white">Lightning Fast Execution</CardTitle>
+                <CardTitle className="text-white">Risk Management</CardTitle>
                 <CardDescription className="text-slate-400">
-                  Average trade duration of 3.2 minutes. Captures rapid price movements with millisecond-precision entry and exit timing.
+                  Advanced stop-loss, take-profit, and position sizing tailored to your risk level.
                 </CardDescription>
               </CardHeader>
             </Card>
-            <Card className="bg-slate-900/60 backdrop-blur-sm border-slate-700/50 hover:border-emerald-500/50 transition-all hover:scale-105" data-testid="feature-card-risk">
+            <Card className="bg-slate-900/60 backdrop-blur-sm border-slate-700/50 hover:border-emerald-500/50 transition-all hover:scale-105" data-testid="feature-card-delivery">
               <CardHeader>
                 <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-emerald-400" />
+                  <Activity className="w-6 h-6 text-emerald-400" />
                 </div>
-                <CardTitle className="text-white">Advanced Risk Management</CardTitle>
+                <CardTitle className="text-white">Email Delivery</CardTitle>
                 <CardDescription className="text-slate-400">
-                  Built-in stop-loss, take-profit, and trailing stops. Maximum drawdown kept under 12.4% with intelligent position sizing.
+                  EA files delivered directly to your email within 24 hours after payment verification.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -296,9 +296,9 @@ function App() {
                 <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4">
                   <Award className="w-6 h-6 text-emerald-400" />
                 </div>
-                <CardTitle className="text-white">Premium Support</CardTitle>
+                <CardTitle className="text-white">Telegram Support</CardTitle>
                 <CardDescription className="text-slate-400">
-                  24/7 customer support, lifetime updates, and access to exclusive trading community. We're here when you need us.
+                  Direct support via Telegram @hchdjd. Get help with setup and optimization.
                 </CardDescription>
               </CardHeader>
             </Card>
