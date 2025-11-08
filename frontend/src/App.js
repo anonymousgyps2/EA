@@ -76,22 +76,39 @@ function App() {
     e.preventDefault();
     if (!selectedProduct) return;
 
+    if (!orderForm.payment_method) {
+      toast.error("Please select a payment method");
+      return;
+    }
+
+    if (!orderForm.transaction_hash) {
+      toast.error("Please enter your transaction hash");
+      return;
+    }
+
     try {
       const orderData = {
         product_id: selectedProduct.id,
         customer_name: orderForm.customer_name,
         customer_email: orderForm.customer_email,
-        amount: selectedProduct.price
+        amount: selectedProduct.price,
+        payment_method: orderForm.payment_method,
+        transaction_hash: orderForm.transaction_hash
       };
 
       const response = await axios.post(`${API}/orders`, orderData);
       setLicenseKey(response.data.license_key);
       setPurchaseComplete(true);
-      toast.success("Purchase successful! Check your email for details.");
+      toast.success("Order received! We'll verify your payment and send the EA to your email within 24 hours.");
     } catch (error) {
       console.error("Error creating order:", error);
-      toast.error("Purchase failed. Please try again.");
+      toast.error("Order failed. Please try again.");
     }
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+    toast.success("Copied to clipboard!");
   };
 
   const openPurchaseDialog = (product) => {
