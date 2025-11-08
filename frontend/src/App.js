@@ -44,10 +44,13 @@ function App() {
   const [orderDialogOpen, setOrderDialogOpen] = useState(false);
   const [orderForm, setOrderForm] = useState({
     customer_name: "",
-    customer_email: ""
+    customer_email: "",
+    payment_method: "",
+    transaction_hash: ""
   });
   const [purchaseComplete, setPurchaseComplete] = useState(false);
   const [licenseKey, setLicenseKey] = useState("");
+  const [showPaymentDetails, setShowPaymentDetails] = useState(false);
 
   useEffect(() => {
     fetchData();
