@@ -9,12 +9,32 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
-import { TrendingUp, Shield, Zap, Clock, Award, CheckCircle2, Activity, BarChart3, DollarSign } from "lucide-react";
+import { TrendingUp, Shield, Zap, Clock, Award, CheckCircle2, Activity, BarChart3, DollarSign, Copy, ExternalLink } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
+
+// Crypto wallet addresses
+const CRYPTO_WALLETS = {
+  TRC20_USDT: "TRC20AddressHere123456789",
+  BEP20_USDT: "BEP20AddressHere123456789",
+  TRX: "TRXAddressHere123456789",
+  BTC: "BTCAddressHere123456789",
+  ETH: "ETHAddressHere123456789",
+  BNB: "BNBAddressHere123456789"
+};
+
+const PAYMENT_METHODS = [
+  { value: "TRC20_USDT", label: "USDT (TRC20)", network: "Tron Network" },
+  { value: "BEP20_USDT", label: "USDT (BEP20)", network: "BSC Network" },
+  { value: "TRX", label: "TRX", network: "Tron" },
+  { value: "BTC", label: "Bitcoin (BTC)", network: "Bitcoin Network" },
+  { value: "ETH", label: "Ethereum (ETH)", network: "Ethereum Network" },
+  { value: "BNB", label: "BNB", network: "BSC Network" }
+];
 
 function App() {
   const [products, setProducts] = useState([]);
