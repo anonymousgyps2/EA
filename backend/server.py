@@ -65,7 +65,11 @@ class Order(BaseModel):
     payment_method: str
     transaction_hash: Optional[str] = None
     license_key: str
-    status: str = "pending"  # pending, completed, failed
+    status: str = "pending"  # pending, verified, completed, failed
+    verification_status: str = "not_verified"  # not_verified, verifying, verified, failed
+    verification_message: Optional[str] = None
+    verification_details: Optional[Dict[str, Any]] = None
+    verified_at: Optional[datetime] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class OrderCreate(BaseModel):
