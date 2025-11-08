@@ -104,8 +104,9 @@ function App() {
 
       const response = await axios.post(`${API}/orders`, orderData);
       setLicenseKey(response.data.license_key);
+      setCurrentOrderId(response.data.id);
       setPurchaseComplete(true);
-      toast.success("Order received! We'll verify your payment and send the EA to your email within 24 hours.");
+      toast.success("Order created! You can now verify your payment.");
     } catch (error) {
       console.error("Error creating order:", error);
       toast.error("Order failed. Please try again.");
