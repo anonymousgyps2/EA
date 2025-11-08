@@ -1,15 +1,15 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-
+import secrets
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -25,46 +25,158 @@ app = FastAPI()
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
-
 # Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
+class Product(BaseModel):
+    model_config = ConfigDict(extra="ignore")
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    name: str
+    description: str
+    price: float
+    features: List[str]
+    platform: str  # MT4, MT5, or Both
+    min_deposit: float
+    profit_percentage: float
+    win_rate: float
+    total_trades: int
+    available: bool = True
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
-class StatusCheckCreate(BaseModel):
-    client_name: str
+class ProductCreate(BaseModel):
+    name: str
+    description: str
+    price: float
+    features: List[str]
+    platform: str
+    min_deposit: float = 50.0
+    profit_percentage: float
+    win_rate: float
+    total_trades: int
 
-# Add your routes to the router instead of directly to app
+class Order(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    product_id: str
+    customer_name: str
+    customer_email: EmailStr
+    amount: float
+    license_key: str
+    status: str = "pending"  # pending, completed, failed
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class OrderCreate(BaseModel):
+    product_id: str
+    customer_name: str
+    customer_email: EmailStr
+    amount: float
+
+class PerformanceMetric(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    total_profit: float
+    monthly_return: float
+    win_rate: float
+    total_trades: int
+    avg_trade_duration: str
+    max_drawdown: float
+    sharpe_ratio: float
+
+# Routes
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Scalping Bot EA Store API"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
+# Product Routes
+@api_router.get("/products", response_model=List[Product])
+async def get_products():
+    products = await db.products.find({}, {"_id": 0}).to_list(1000)
+    for product in products:
+        if isinstance(product['created_at'], str):
+            product['created_at'] = datetime.fromisoformat(product['created_at'])
+    return products
 
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
+@api_router.get("/products/{product_id}", response_model=Product)
+async def get_product(product_id: str):
+    product = await db.products.find_one({"id": product_id}, {"_id": 0})
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    if isinstance(product['created_at'], str):
+        product['created_at'] = datetime.fromisoformat(product['created_at'])
+    return product
+
+@api_router.post("/products", response_model=Product)
+async def create_product(product_input: ProductCreate):
+    product_dict = product_input.model_dump()
+    product_obj = Product(**product_dict)
     
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
+    doc = product_obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
     
-    return status_checks
+    await db.products.insert_one(doc)
+    return product_obj
+
+# Order Routes
+@api_router.post("/orders", response_model=Order)
+async def create_order(order_input: OrderCreate):
+    # Verify product exists
+    product = await db.products.find_one({"id": order_input.product_id}, {"_id": 0})
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    
+    # Generate license key
+    license_key = f"EA-{secrets.token_urlsafe(16).upper()}"
+    
+    order_dict = order_input.model_dump()
+    order_obj = Order(**order_dict, license_key=license_key, status="completed")
+    
+    doc = order_obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    await db.orders.insert_one(doc)
+    return order_obj
+
+@api_router.get("/orders", response_model=List[Order])
+async def get_orders():
+    orders = await db.orders.find({}, {"_id": 0}).to_list(1000)
+    for order in orders:
+        if isinstance(order['created_at'], str):
+            order['created_at'] = datetime.fromisoformat(order['created_at'])
+    return orders
+
+@api_router.get("/orders/{order_id}", response_model=Order)
+async def get_order(order_id: str):
+    order = await db.orders.find_one({"id": order_id}, {"_id": 0})
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found")
+    if isinstance(order['created_at'], str):
+        order['created_at'] = datetime.fromisoformat(order['created_at'])
+    return order
+
+# Performance Metrics
+@api_router.get("/performance", response_model=PerformanceMetric)
+async def get_performance():
+    metric = await db.performance.find_one({}, {"_id": 0})
+    if not metric:
+        # Return default metrics if none exist
+        return PerformanceMetric(
+            total_profit=147250.50,
+            monthly_return=18.5,
+            win_rate=87.3,
+            total_trades=2847,
+            avg_trade_duration="3.2 min",
+            max_drawdown=12.4,
+            sharpe_ratio=2.8
+        )
+    return metric
+
+@api_router.post("/performance", response_model=PerformanceMetric)
+async def create_performance(metric: PerformanceMetric):
+    doc = metric.model_dump()
+    await db.performance.delete_many({})  # Keep only one performance record
+    await db.performance.insert_one(doc)
+    return metric
 
 # Include the router in the main app
 app.include_router(api_router)
@@ -87,3 +199,36 @@ logger = logging.getLogger(__name__)
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+
+# Initialize default product on startup
+@app.on_event("startup")
+async def init_default_data():
+    # Check if products exist
+    existing = await db.products.find_one({})
+    if not existing:
+        default_product = Product(
+            name="ScalpMaster Pro EA",
+            description="Advanced scalping algorithm designed for MT4/MT5. Uses proprietary price action analysis and multi-timeframe confluence to identify high-probability entries. Features intelligent risk management, trailing stops, and market volatility filters.",
+            price=299.00,
+            features=[
+                "Works with MT4 & MT5 platforms",
+                "Minimum deposit: $50",
+                "87.3% win rate on backtests",
+                "Automated scalping strategies",
+                "Advanced risk management",
+                "Real-time market analysis",
+                "24/7 automated trading",
+                "One-click installation",
+                "Lifetime updates included",
+                "24/7 customer support"
+            ],
+            platform="Both",
+            min_deposit=50.0,
+            profit_percentage=18.5,
+            win_rate=87.3,
+            total_trades=2847
+        )
+        doc = default_product.model_dump()
+        doc['created_at'] = doc['created_at'].isoformat()
+        await db.products.insert_one(doc)
+        logger.info("Default product created")
