@@ -61,6 +61,8 @@ class Order(BaseModel):
     customer_name: str
     customer_email: EmailStr
     amount: float
+    payment_method: str
+    transaction_hash: Optional[str] = None
     license_key: str
     status: str = "pending"  # pending, completed, failed
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
