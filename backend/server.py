@@ -331,6 +331,7 @@ logger = logging.getLogger(__name__)
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+    await payment_verifier.close()
 
 # Initialize default product on startup
 @app.on_event("startup")
