@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import "@/App.css";
 import axios from "axios";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,7 +14,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
-import { TrendingUp, Shield, Zap, Clock, Award, CheckCircle2, Activity, BarChart3, DollarSign, Copy, ExternalLink } from "lucide-react";
+import { TrendingUp, Shield, Zap, Clock, Award, CheckCircle2, Activity, BarChart3, DollarSign, Copy, ExternalLink, Loader2 } from "lucide-react";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
