@@ -675,12 +675,56 @@ function App() {
               </div>
               <DialogTitle className="text-2xl mb-2">Order Submitted Successfully!</DialogTitle>
               <DialogDescription className="text-slate-400 mb-6">
-                We've received your order. Your EA will be delivered to <strong className="text-white">{orderForm.customer_email}</strong> within 24 hours after payment verification.
+                We've received your order. Click the button below to verify your payment on the blockchain.
               </DialogDescription>
-              <div className="bg-slate-800 p-4 rounded-lg mb-6">
+              
+              <div className="bg-slate-800 p-4 rounded-lg mb-4">
                 <p className="text-sm text-slate-400 mb-2">Your Order Reference:</p>
                 <p className="text-lg font-mono text-emerald-400 break-all" data-testid="license-key">{licenseKey}</p>
               </div>
+
+              {/* Payment Verification Section */}
+              <div className="mb-6">
+                <Button 
+                  onClick={verifyPayment}
+                  disabled={verifying || (verificationResult && verificationResult.success)}
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 rounded-full text-lg mb-4"
+                >
+                  {verifying ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Verifying Payment...
+                    </>
+                  ) : verificationResult && verificationResult.success ? (
+                    <>
+                      <CheckCircle2 className="w-5 h-5 mr-2" />
+                      Payment Verified!
+                    </>
+                  ) : (
+                    "Verify My Payment"
+                  )}
+                </Button>
+
+                {verificationResult && (
+                  <div className={`p-4 rounded-lg border ${
+                    verificationResult.success 
+                      ? 'bg-green-500/10 border-green-500/30' 
+                      : 'bg-red-500/10 border-red-500/30'
+                  }`}>
+                    <p className={`text-sm ${
+                      verificationResult.success ? 'text-green-300' : 'text-red-300'
+                    }`}>
+                      {verificationResult.message}
+                    </p>
+                    {verificationResult.success && (
+                      <p className="text-xs text-slate-400 mt-2">
+                        Your EA will be delivered to <strong className="text-white">{orderForm.customer_email}</strong> within 24 hours.
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+              
               <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-6">
                 <p className="text-sm text-blue-300 mb-2">
                   Track your order or get support on Telegram:
