@@ -161,7 +161,130 @@ async def get_order(order_id: str):
         raise HTTPException(status_code=404, detail="Order not found")
     if isinstance(order['created_at'], str):
         order['created_at'] = datetime.fromisoformat(order['created_at'])
+    if order.get('verified_at') and isinstance(order['verified_at'], str):
+        order['verified_at'] = datetime.fromisoformat(order['verified_at'])
     return order
+
+# Payment Verification Endpoint
+@api_router.post("/orders/{order_id}/verify")
+async def verify_order_payment(order_id: str):
+    """Verify the payment for an order using blockchain APIs"""
+    # Get the order
+    order = await db.orders.find_one({"id": order_id}, {"_id": 0})
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found")
+    
+    if not order.get("transaction_hash"):
+        raise HTTPException(status_code=400, detail="No transaction hash provided")
+    
+    # Update status to verifying
+    await db.orders.update_one(
+        {"id": order_id},
+        {"$set": {"verification_status": "verifying"}}
+    )
+    
+    # Get the wallet address for this payment method
+    wallet_address = CRYPTO_WALLETS.get(order["payment_method"])
+    if not wallet_address:
+        raise HTTPException(status_code=400, detail="Invalid payment method")
+    
+    # Verify the payment
+    success, message, tx_details = await payment_verifier.verify_payment(
+        transaction_hash=order["transaction_hash"],
+        payment_method=order["payment_method"],
+        expected_amount=order["amount"],
+        wallet_address=wallet_address
+    )
+    
+    # Update order with verification results
+    update_data = {
+        "verification_status": "verified" if success else "failed",
+        "verification_message": message,
+        "verification_details": tx_details
+    }
+    
+    if success:
+        update_data["verified_at"] = datetime.now(timezone.utc).isoformat()
+        update_data["status"] = "verified"
+    
+    await db.orders.update_one(
+        {"id": order_id},
+        {"$set": update_data}
+    )
+    
+    return {
+        "success": success,
+        "message": message,
+        "details": tx_details,
+        "order_id": order_id
+    }
+
+# Admin: Update order status
+@api_router.patch("/orders/{order_id}/status")
+async def update_order_status(order_id: str, status: str):
+    """Admin endpoint to manually update order status"""
+    valid_statuses = ["pending", "verified", "completed", "failed"]
+    if status not in valid_statuses:
+        raise HTTPException(status_code=400, detail=f"Invalid status. Must be one of: {valid_statuses}")
+    
+    result = await db.orders.update_one(
+        {"id": order_id},
+        {"$set": {"status": status}}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Order not found")
+    
+    return {"message": "Order status updated", "order_id": order_id, "status": status}
+
+# Admin: Get all orders with filters
+@api_router.get("/admin/orders")
+async def get_all_orders_admin(
+    status: Optional[str] = None,
+    verification_status: Optional[str] = None,
+    limit: int = 100
+):
+    """Admin endpoint to get all orders with optional filters"""
+    query = {}
+    if status:
+        query["status"] = status
+    if verification_status:
+        query["verification_status"] = verification_status
+    
+    orders = await db.orders.find(query, {"_id": 0}).sort("created_at", -1).limit(limit).to_list(limit)
+    
+    for order in orders:
+        if isinstance(order.get('created_at'), str):
+            order['created_at'] = datetime.fromisoformat(order['created_at'])
+        if order.get('verified_at') and isinstance(order['verified_at'], str):
+            order['verified_at'] = datetime.fromisoformat(order['verified_at'])
+    
+    return orders
+
+# Get order stats for admin dashboard
+@api_router.get("/admin/stats")
+async def get_admin_stats():
+    """Get overview statistics for admin dashboard"""
+    total_orders = await db.orders.count_documents({})
+    pending_orders = await db.orders.count_documents({"status": "pending"})
+    verified_orders = await db.orders.count_documents({"status": "verified"})
+    completed_orders = await db.orders.count_documents({"status": "completed"})
+    
+    # Calculate total revenue from completed orders
+    pipeline = [
+        {"$match": {"status": {"$in": ["verified", "completed"]}}},
+        {"$group": {"_id": None, "total_revenue": {"$sum": "$amount"}}}
+    ]
+    revenue_result = await db.orders.aggregate(pipeline).to_list(1)
+    total_revenue = revenue_result[0]["total_revenue"] if revenue_result else 0
+    
+    return {
+        "total_orders": total_orders,
+        "pending_orders": pending_orders,
+        "verified_orders": verified_orders,
+        "completed_orders": completed_orders,
+        "total_revenue": total_revenue
+    }
 
 # Performance Metrics
 @api_router.get("/performance", response_model=PerformanceMetric)
