@@ -511,22 +511,22 @@ function App() {
               <p className="text-slate-300 mb-4 text-sm">Offer ends in:</p>
               <div className="flex items-center justify-center gap-3">
                 <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-emerald-500/30 rounded-xl p-4 min-w-[80px]">
-                  <div className="text-3xl font-bold text-white mb-1">2</div>
+                  <div className="text-3xl font-bold text-white mb-1">{timeRemaining.days}</div>
                   <div className="text-xs text-slate-400 uppercase tracking-wider">Days</div>
                 </div>
                 <div className="text-emerald-400 text-2xl font-bold">:</div>
                 <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-emerald-500/30 rounded-xl p-4 min-w-[80px]">
-                  <div className="text-3xl font-bold text-white mb-1">23</div>
+                  <div className="text-3xl font-bold text-white mb-1">{String(timeRemaining.hours).padStart(2, '0')}</div>
                   <div className="text-xs text-slate-400 uppercase tracking-wider">Hours</div>
                 </div>
                 <div className="text-emerald-400 text-2xl font-bold">:</div>
                 <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-emerald-500/30 rounded-xl p-4 min-w-[80px]">
-                  <div className="text-3xl font-bold text-white mb-1">59</div>
+                  <div className="text-3xl font-bold text-white mb-1">{String(timeRemaining.minutes).padStart(2, '0')}</div>
                   <div className="text-xs text-slate-400 uppercase tracking-wider">Mins</div>
                 </div>
                 <div className="text-emerald-400 text-2xl font-bold">:</div>
                 <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-emerald-500/30 rounded-xl p-4 min-w-[80px]">
-                  <div className="text-3xl font-bold text-white mb-1">34</div>
+                  <div className="text-3xl font-bold text-white mb-1">{String(timeRemaining.seconds).padStart(2, '0')}</div>
                   <div className="text-xs text-slate-400 uppercase tracking-wider">Secs</div>
                 </div>
               </div>
