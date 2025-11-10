@@ -175,7 +175,7 @@ class PaymentVerifier:
             response = await self.client.get(url)
             
             if response.status_code != 200:
-                return False, "Bitcoin transaction not found", None
+                return False, f"{coin_name} transaction not found", None
             
             data = response.json()
             
@@ -189,25 +189,24 @@ class PaymentVerifier:
             for output in outputs:
                 addresses = output.get("addresses", [])
                 value_satoshi = output.get("value", 0)
-                value_btc = value_satoshi / 100_000_000
+                value_coin = value_satoshi / 100_000_000
                 
                 if wallet_address in addresses:
-                    # For BTC, we verify it has a reasonable amount
-                    # (exact USD value verification is complex due to price volatility)
-                    if value_btc < 0.0001:  # Minimum 0.0001 BTC
-                        return False, f"Amount too low: {value_btc} BTC", None
+                    # Verify minimum amount
+                    if value_coin < min_amount:
+                        return False, f"Amount too low: {value_coin} {coin_type}", None
                     
                     tx_details = {
                         "transaction_hash": tx_hash,
                         "from_address": data.get("inputs", [{}])[0].get("addresses", ["Unknown"])[0] if data.get("inputs") else "Unknown",
                         "to_address": wallet_address,
-                        "amount": value_btc,
+                        "amount": value_coin,
                         "confirmations": confirmations,
                         "timestamp": data.get("confirmed"),
                         "confirmed": True
                     }
                     
-                    return True, "Bitcoin payment verified successfully", tx_details
+                    return True, f"{coin_name} payment verified successfully", tx_details
             
             return False, "No payment found to specified Bitcoin address", None
             
