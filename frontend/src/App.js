@@ -456,9 +456,42 @@ function App() {
       {/* Products Section */}
       <section id="products" className="py-20 px-6 bg-slate-900/30" data-testid="products-section">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="products-title">Choose Your Trading Style</h2>
-            <p className="text-lg text-slate-400">Three risk levels. Three profit potentials. One powerful solution.</p>
+          {/* Pricing Callout with Countdown */}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-3" data-testid="products-title">
+              Choose Your Licence & Start Trading Today.
+            </h2>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-amber-500"></div>
+              <p className="text-amber-400 font-semibold text-lg">Limited Offer, Prices Increase Soon!</p>
+              <div className="h-px w-16 bg-gradient-to-l from-transparent to-amber-500"></div>
+            </div>
+            
+            {/* Countdown Timer */}
+            <div className="mb-8">
+              <p className="text-slate-300 mb-4 text-sm">Offer ends in:</p>
+              <div className="flex items-center justify-center gap-3">
+                <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-emerald-500/30 rounded-xl p-4 min-w-[80px]">
+                  <div className="text-3xl font-bold text-white mb-1">2</div>
+                  <div className="text-xs text-slate-400 uppercase tracking-wider">Days</div>
+                </div>
+                <div className="text-emerald-400 text-2xl font-bold">:</div>
+                <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-emerald-500/30 rounded-xl p-4 min-w-[80px]">
+                  <div className="text-3xl font-bold text-white mb-1">23</div>
+                  <div className="text-xs text-slate-400 uppercase tracking-wider">Hours</div>
+                </div>
+                <div className="text-emerald-400 text-2xl font-bold">:</div>
+                <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-emerald-500/30 rounded-xl p-4 min-w-[80px]">
+                  <div className="text-3xl font-bold text-white mb-1">59</div>
+                  <div className="text-xs text-slate-400 uppercase tracking-wider">Mins</div>
+                </div>
+                <div className="text-emerald-400 text-2xl font-bold">:</div>
+                <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-emerald-500/30 rounded-xl p-4 min-w-[80px]">
+                  <div className="text-3xl font-bold text-white mb-1">34</div>
+                  <div className="text-xs text-slate-400 uppercase tracking-wider">Secs</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {products.map((product, index) => (
