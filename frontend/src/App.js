@@ -544,6 +544,22 @@ function App() {
                       </div>
                     ))}
                   </div>
+                  {/* Benefits Row */}
+                  <div className="flex items-center justify-center gap-4 mb-6 text-xs text-slate-300 bg-slate-800/30 rounded-lg py-3 px-2">
+                    <div className="flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                      <span>Instant Download</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                      <span>Secure Payment</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                      <span>24/7 Support</span>
+                    </div>
+                  </div>
+                  
                   <Button 
                     className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 rounded-full text-lg font-semibold shadow-lg shadow-emerald-500/30 transition-all hover:scale-105"
                     onClick={() => openPurchaseDialog(product)}
