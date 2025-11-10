@@ -1015,16 +1015,4 @@ function App() {
   );
 }
 
-function App() {
-  return (
-    <Router>
-      <Toaster position="top-right" />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-      </Routes>
-    </Router>
-  );
-}
-
 export default App;
