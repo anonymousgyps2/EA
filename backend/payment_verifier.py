@@ -97,7 +97,7 @@ class PaymentVerifier:
                 return False, "Transaction not yet confirmed", None
             
             # For TRC20 USDT
-            if payment_method == "TRC20_USDT":
+            if payment_method == "USDT_TRC20":
                 # Check if it's a TRC20 token transfer
                 token_transfers = data.get("trc20TransferInfo", [])
                 
