@@ -373,7 +373,7 @@ async def init_default_data():
                 "Balanced risk management (2% per trade max)",
                 "Dynamic stop-loss adjustment (15-25 pips)",
                 "Medium trade frequency for optimal opportunities",
-                "Targets 12-18% monthly returns",
+                "Targets 12-18% daily returns",
                 "Maximum drawdown limited to 15%",
                 "Adapts to trending and ranging markets",
                 "Multi-timeframe analysis (M5, M15, H1)",
