@@ -212,7 +212,7 @@ function App() {
             <div className="mt-8 flex items-center justify-center gap-3 text-slate-300">
               <span className="text-sm">Need Support?</span>
               <a 
-                href="https://t.me/hchdjd" 
+                href="https://t.me/VeltrionEA" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-slate-700/50 transition-all"
@@ -221,7 +221,7 @@ function App() {
                 <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                 </svg>
-                <span className="font-medium">@hchdjd</span>
+                <span className="font-medium">@VeltrionEA</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>
@@ -439,7 +439,7 @@ function App() {
                 </div>
                 <CardTitle className="text-white">Telegram Support</CardTitle>
                 <CardDescription className="text-slate-400">
-                  Direct support via Telegram @hchdjd. Get help with setup and optimization.
+                  Direct support via Telegram @VeltrionEA. Get help with setup and optimization.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -646,7 +646,7 @@ function App() {
                     <div className="w-6 h-6 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-emerald-400 text-xs font-bold">3</span>
                     </div>
-                    <p><strong className="text-white">Urgent Delivery:</strong> Contact @hchdjd on Telegram for expedited processing</p>
+                    <p><strong className="text-white">Urgent Delivery:</strong> Contact @VeltrionEA on Telegram for expedited processing</p>
                   </div>
                 </div>
               </AccordionContent>
@@ -683,7 +683,7 @@ function App() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                    <span>24/7 Telegram support @hchdjd</span>
+                    <span>24/7 Telegram support @VeltrionEA</span>
                   </li>
                 </ul>
               </AccordionContent>
@@ -764,7 +764,7 @@ function App() {
                     </div>
                     <div>
                       <p className="text-white font-semibold mb-2">24/7 Priority Support on Telegram</p>
-                      <p className="text-sm mb-3">Contact us directly at <a href="https://t.me/hchdjd" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">@hchdjd</a> for instant support</p>
+                      <p className="text-sm mb-3">Contact us directly at <a href="https://t.me/VeltrionEA" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">@VeltrionEA</a> for instant support</p>
                       <div className="space-y-2">
                         <p className="text-sm flex items-center gap-2">
                           <CheckCircle2 className="w-4 h-4 text-emerald-400" />
@@ -810,7 +810,7 @@ function App() {
                     <strong>Managing Multiple Accounts?</strong> We offer special multi-license discounts!
                   </p>
                 </div>
-                <p className="text-sm">Contact us on Telegram <a href="https://t.me/hchdjd" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">@hchdjd</a> for volume pricing if you need to use the EA across multiple trading accounts.</p>
+                <p className="text-sm">Contact us on Telegram <a href="https://t.me/VeltrionEA" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">@VeltrionEA</a> for volume pricing if you need to use the EA across multiple trading accounts.</p>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -823,7 +823,7 @@ function App() {
                 <p className="text-slate-300 mb-6">Our support team is ready to help you 24/7</p>
                 <Button 
                   className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg rounded-full"
-                  onClick={() => window.open('https://t.me/hchdjd', '_blank')}
+                  onClick={() => window.open('https://t.me/VeltrionEA', '_blank')}
                 >
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
@@ -845,7 +845,7 @@ function App() {
             <div className="flex items-center justify-center gap-3">
               <span className="text-slate-400 text-sm">Product Support:</span>
               <a 
-                href="https://t.me/hchdjd" 
+                href="https://t.me/VeltrionEA" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-slate-700/50 transition-all text-blue-400"
@@ -854,7 +854,7 @@ function App() {
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                 </svg>
-                <span className="font-medium">@hchdjd</span>
+                <span className="font-medium">@VeltrionEA</span>
               </a>
             </div>
           </div>
@@ -1009,7 +1009,7 @@ function App() {
                     <strong>Need help?</strong> Contact us on Telegram:
                   </p>
                   <a 
-                    href="https://t.me/hchdjd" 
+                    href="https://t.me/VeltrionEA" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
@@ -1017,7 +1017,7 @@ function App() {
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                     </svg>
-                    <span className="font-medium">@hchdjd</span>
+                    <span className="font-medium">@VeltrionEA</span>
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
@@ -1094,7 +1094,7 @@ function App() {
                   Track your order or get support on Telegram:
                 </p>
                 <a 
-                  href="https://t.me/hchdjd" 
+                  href="https://t.me/VeltrionEA" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
@@ -1102,7 +1102,7 @@ function App() {
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                   </svg>
-                  <span className="font-medium">@hchdjd</span>
+                  <span className="font-medium">@VeltrionEA</span>
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
