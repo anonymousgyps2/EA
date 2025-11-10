@@ -20,21 +20,25 @@ const API = `${BACKEND_URL}/api`;
 
 // Crypto wallet addresses
 const CRYPTO_WALLETS = {
-  TRC20_USDT: "TRC20AddressHere123456789",
-  BEP20_USDT: "BEP20AddressHere123456789",
-  TRX: "TRXAddressHere123456789",
-  BTC: "BTCAddressHere123456789",
-  ETH: "ETHAddressHere123456789",
-  BNB: "BNBAddressHere123456789"
+  SOL: "7y6iX6QjTQjhGXfX9URNZButsu6YFXg3wdS2zLRDr7xp",
+  BNB: "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772",
+  ETH: "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772",
+  TRX: "TTSTe4V34whYwqz5SsY4wtKNnh3PuhAx4E",
+  BTC: "bc1qer38a338dp9dq7q6nl4jh5kny38yqa07hfcp6p",
+  LTC: "ltc1qgnd4lazpqd897z469nhcva96mmr0tjrg8swlhs",
+  USDT_ETH: "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772",
+  USDT_BSC: "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772"
 };
 
 const PAYMENT_METHODS = [
-  { value: "TRC20_USDT", label: "USDT (TRC20)", network: "Tron Network" },
-  { value: "BEP20_USDT", label: "USDT (BEP20)", network: "BSC Network" },
-  { value: "TRX", label: "TRX", network: "Tron" },
-  { value: "BTC", label: "Bitcoin (BTC)", network: "Bitcoin Network" },
+  { value: "SOL", label: "Solana (SOL)", network: "Solana Network" },
+  { value: "BNB", label: "BNB", network: "BSC Network" },
   { value: "ETH", label: "Ethereum (ETH)", network: "Ethereum Network" },
-  { value: "BNB", label: "BNB", network: "BSC Network" }
+  { value: "TRX", label: "Tron (TRX)", network: "Tron Network" },
+  { value: "BTC", label: "Bitcoin (BTC)", network: "Bitcoin Network" },
+  { value: "LTC", label: "Litecoin (LTC)", network: "Litecoin Network" },
+  { value: "USDT_ETH", label: "USDT (ERC20)", network: "Ethereum Network" },
+  { value: "USDT_BSC", label: "USDT (BEP20)", network: "BSC Network" }
 ];
 
 function App() {
