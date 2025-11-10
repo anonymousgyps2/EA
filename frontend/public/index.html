@@ -48,6 +48,29 @@
                 document.head.appendChild(tailwindScript);
             }
         </script>
+        <script>
+            // Suppress ResizeObserver errors globally (before React loads)
+            // This is a harmless error from Radix UI animations and doesn't affect functionality
+            (function() {
+                const resizeObserverErrRe = /ResizeObserver loop/;
+                const originalConsoleError = console.error;
+                
+                console.error = function() {
+                    const args = Array.from(arguments);
+                    if (args.some(arg => typeof arg === 'string' && resizeObserverErrRe.test(arg))) {
+                        return; // Suppress ResizeObserver errors
+                    }
+                    originalConsoleError.apply(console, args);
+                };
+
+                window.addEventListener('error', function(e) {
+                    if (resizeObserverErrRe.test(e.message)) {
+                        e.stopImmediatePropagation();
+                        return true;
+                    }
+                });
+            })();
+        </script>
     </head>
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
