@@ -14,17 +14,19 @@ logger = logging.getLogger(__name__)
 
 # Wallet addresses from the app
 CRYPTO_WALLETS = {
+    "USDT_TRC20": "TTSTe4V34whYwqz5SsY4wtKNnh3PuhAx4E",
+    "USDT_ETH": "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772",
+    "USDT_BSC": "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772",
     "SOL": "7y6iX6QjTQjhGXfX9URNZButsu6YFXg3wdS2zLRDr7xp",
     "BNB": "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772",
     "ETH": "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772",
     "TRX": "TTSTe4V34whYwqz5SsY4wtKNnh3PuhAx4E",
     "BTC": "bc1qer38a338dp9dq7q6nl4jh5kny38yqa07hfcp6p",
-    "LTC": "ltc1qgnd4lazpqd897z469nhcva96mmr0tjrg8swlhs",
-    "USDT_ETH": "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772",
-    "USDT_BSC": "0xb971a4E8DCD38d87c4629642a4EAe2591ECd4772"
+    "LTC": "ltc1qgnd4lazpqd897z469nhcva96mmr0tjrg8swlhs"
 }
 
 # Token Contract Addresses
+USDT_TRC20_CONTRACT = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"  # USDT on Tron
 USDT_ETH_CONTRACT = "0xdac17f958d2ee523a2206206994597c13d831ec7"  # USDT on Ethereum
 USDT_BSC_CONTRACT = "0x55d398326f99059fF775485246999027B3197955"  # USDT on BSC
 
