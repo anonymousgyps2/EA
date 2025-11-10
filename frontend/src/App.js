@@ -480,7 +480,7 @@ function App() {
                       <span className="text-white font-semibold">${product.min_deposit}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-400">Monthly Return:</span>
+                      <span className="text-slate-400">Daily Return:</span>
                       <span className="text-emerald-400 font-semibold">{product.profit_percentage}%</span>
                     </div>
                     <div className="flex justify-between text-sm">
