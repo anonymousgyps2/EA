@@ -554,21 +554,21 @@ function App() {
                     <Shield className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                     <div>
                       <strong className="text-white block mb-1">Low Risk EA ($90)</strong>
-                      <p className="text-sm">Conservative strategy with 1% risk per trade, 6.5% monthly returns, 89.2% win rate. Best for beginners and capital preservation.</p>
+                      <p className="text-sm">Conservative strategy with 1% risk per trade, 6.5% daily returns, 89.2% win rate. Best for beginners and capital preservation.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
                     <TrendingUp className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
                     <div>
                       <strong className="text-white block mb-1">Moderate Risk EA ($150)</strong>
-                      <p className="text-sm">Balanced approach with 2% risk per trade, 15.2% monthly returns, 85.7% win rate. Ideal for steady growth.</p>
+                      <p className="text-sm">Balanced approach with 2% risk per trade, 15.2% daily returns, 85.7% win rate. Ideal for steady growth.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-4 bg-orange-500/5 rounded-lg border border-orange-500/20">
                     <Zap className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
                     <div>
                       <strong className="text-white block mb-1">High Risk EA ($200)</strong>
-                      <p className="text-sm">Aggressive strategy with 3-5% risk per trade, 32.8% monthly returns, 82.4% win rate. For experienced traders seeking maximum profits.</p>
+                      <p className="text-sm">Aggressive strategy with 3-5% risk per trade, 32.8% daily returns, 82.4% win rate. For experienced traders seeking maximum profits.</p>
                     </div>
                   </div>
                 </div>
