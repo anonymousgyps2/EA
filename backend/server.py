@@ -348,7 +348,7 @@ async def init_default_data():
                 "Conservative risk management (1% per trade max)",
                 "Strict stop-loss placement (10-15 pips)",
                 "Lower trade frequency for quality over quantity",
-                "Targets 5-8% monthly returns consistently",
+                "Targets 5-8% daily returns consistently",
                 "Maximum drawdown limited to 8%",
                 "Works best in ranging and low volatility markets",
                 "Automated position sizing based on account balance",
