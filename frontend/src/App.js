@@ -572,6 +572,78 @@ function App() {
               </Card>
             ))}
           </div>
+          
+          {/* Account Requirements Section */}
+          <div className="mt-16 max-w-4xl mx-auto">
+            <Card className="bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-lg border-2 border-blue-500/30 overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border-b border-blue-500/30">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-2xl text-white">Account Requirements</CardTitle>
+                    <CardDescription className="text-blue-200">Choose the right account type for your deposit size</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Under $1,000 */}
+                  <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-blue-500/50 transition-all">
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <DollarSign className="w-5 h-5 text-blue-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-2">Deposits Under $1,000</h3>
+                        <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/40 text-xs">Cent Account</Badge>
+                      </div>
+                    </div>
+                    <p className="text-slate-300 text-sm leading-relaxed">
+                      Use a <strong className="text-white">cent account</strong> from our recommended broker. Your deposit will be automatically converted into cents (e.g., $500 = 50,000 cents), simulating a larger account for optimal robot performance.
+                    </p>
+                    <div className="mt-4 flex items-center gap-2 text-xs text-emerald-400">
+                      <CheckCircle2 className="w-4 h-4" />
+                      <span>Best for smaller accounts</span>
+                    </div>
+                  </div>
+
+                  {/* Over $1,000 */}
+                  <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-emerald-500/50 transition-all">
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <TrendingUp className="w-5 h-5 text-emerald-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-2">Deposits Over $1,000</h3>
+                        <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40 text-xs">Standard Account</Badge>
+                      </div>
+                    </div>
+                    <p className="text-slate-300 text-sm leading-relaxed">
+                      Use a <strong className="text-white">standard account</strong> from our recommended broker. The robot will trade at full capacity with your regular account balance.
+                    </p>
+                    <div className="mt-4 flex items-center gap-2 text-xs text-emerald-400">
+                      <CheckCircle2 className="w-4 h-4" />
+                      <span>Optimal for larger accounts</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional Info */}
+                <div className="mt-6 bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                  <p className="text-sm text-blue-200 flex items-start gap-2">
+                    <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                    </svg>
+                    <span>
+                      <strong className="text-white">Important:</strong> Contact us on Telegram <a href="https://t.me/VeltrionEA" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">@VeltrionEA</a> for broker recommendations and account setup guidance.
+                    </span>
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
