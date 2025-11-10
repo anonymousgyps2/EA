@@ -54,7 +54,7 @@ class PaymentVerifier:
         Returns: (success, message, transaction_details)
         """
         try:
-            if payment_method == "TRX":
+            if payment_method in ["TRX", "USDT_TRC20"]:
                 return await self._verify_tron_transaction(
                     transaction_hash, payment_method, expected_amount, wallet_address
                 )
