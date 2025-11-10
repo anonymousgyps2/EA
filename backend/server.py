@@ -399,7 +399,7 @@ async def init_default_data():
                 "Aggressive risk management (3-5% per trade)",
                 "Wide stop-loss for market breathing room (25-40 pips)",
                 "High trade frequency to maximize opportunities",
-                "Targets 25-40% monthly returns",
+                "Targets 25-40% daily returns",
                 "Maximum drawdown up to 25% (managed carefully)",
                 "Optimized for high volatility and trending markets",
                 "Multi-pair scalping across 6+ currency pairs",
