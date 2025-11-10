@@ -158,12 +158,19 @@ class PaymentVerifier:
             return False, f"Tron verification failed: {str(e)}", None
     
     async def _verify_bitcoin_transaction(
-        self, tx_hash: str, expected_amount: float, wallet_address: str
+        self, tx_hash: str, expected_amount: float, wallet_address: str, coin_type: str = "BTC"
     ) -> Tuple[bool, str, Optional[Dict]]:
-        """Verify Bitcoin transactions using BlockCypher API (free tier)"""
+        """Verify Bitcoin/Litecoin transactions using BlockCypher API (free tier)"""
         try:
             # BlockCypher API - Free tier, no key required
-            url = f"https://api.blockcypher.com/v1/btc/main/txs/{tx_hash}"
+            if coin_type == "LTC":
+                url = f"https://api.blockcypher.com/v1/ltc/main/txs/{tx_hash}"
+                min_amount = 0.001  # Minimum 0.001 LTC
+                coin_name = "Litecoin"
+            else:
+                url = f"https://api.blockcypher.com/v1/btc/main/txs/{tx_hash}"
+                min_amount = 0.0001  # Minimum 0.0001 BTC
+                coin_name = "Bitcoin"
             
             response = await self.client.get(url)
             
