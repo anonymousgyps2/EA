@@ -37,7 +37,7 @@ const PAYMENT_METHODS = [
   { value: "BNB", label: "BNB", network: "BSC Network" }
 ];
 
-function HomePage() {
+function App() {
   const [products, setProducts] = useState([]);
   const [performance, setPerformance] = useState(null);
   const [loading, setLoading] = useState(true);
