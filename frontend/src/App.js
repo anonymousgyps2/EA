@@ -241,7 +241,7 @@ function App() {
                 <CardContent className="p-6 text-center">
                   <TrendingUp className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
                   <p className="text-3xl font-bold text-white">{performance.monthly_return}%</p>
-                  <p className="text-sm text-slate-400 mt-1">Avg Monthly Return</p>
+                  <p className="text-sm text-slate-400 mt-1">Avg Daily Return</p>
                 </CardContent>
               </Card>
               <Card className="bg-slate-900/50 backdrop-blur-lg border-slate-700/50 hover:border-emerald-500/50 transition-all" data-testid="stat-card-winrate">
