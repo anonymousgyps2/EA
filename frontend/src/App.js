@@ -552,8 +552,18 @@ function App() {
                   </div>
                   <CardTitle className="text-2xl text-white mb-2" data-testid="product-name">{product.name}</CardTitle>
                   <div className="text-center my-4">
+                    {/* Original Price (25% markup) - Strikethrough */}
+                    <p className="text-lg text-slate-500 line-through mb-1">
+                      ${(product.price * 1.25).toFixed(2)}
+                    </p>
+                    {/* Current Sale Price */}
                     <p className="text-5xl font-bold text-white" data-testid="product-price">${product.price}</p>
-                    <p className="text-sm text-slate-400 mt-1">One-time payment</p>
+                    <div className="flex items-center justify-center gap-2 mt-2">
+                      <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/40 text-xs">
+                        SAVE 25%
+                      </Badge>
+                      <p className="text-sm text-slate-400">One-time payment</p>
+                    </div>
                   </div>
                   <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40 mx-auto" data-testid="product-platform">{product.platform}</Badge>
                 </CardHeader>
