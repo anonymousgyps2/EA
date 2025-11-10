@@ -217,12 +217,16 @@ class PaymentVerifier:
     async def _verify_eth_based_transaction(
         self, tx_hash: str, payment_method: str, expected_amount: float, wallet_address: str
     ) -> Tuple[bool, str, Optional[Dict]]:
-        """Verify Ethereum and BSC transactions using public RPC endpoints"""
+        """Verify Ethereum, BSC, and Solana transactions using public RPC endpoints"""
         try:
+            # Handle Solana separately
+            if payment_method == "SOL":
+                return await self._verify_solana_transaction(tx_hash, expected_amount, wallet_address)
+            
             # Use public RPC endpoints (free)
-            if payment_method in ["ETH"]:
+            if payment_method in ["ETH", "USDT_ETH"]:
                 rpc_url = "https://eth.public-rpc.com"
-            elif payment_method in ["BEP20_USDT", "BNB"]:
+            elif payment_method in ["USDT_BSC", "BNB"]:
                 rpc_url = "https://bsc-dataseed.binance.org"
             else:
                 return False, "Unsupported network", None
