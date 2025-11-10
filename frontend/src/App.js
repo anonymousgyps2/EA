@@ -170,16 +170,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950">
+      <Toaster position="top-right" />
       
-      {/* Admin Link */}
-      <div className="absolute top-4 right-4 z-50">
-        <Link to="/admin">
-          <Button variant="outline" className="border-slate-600 text-white hover:bg-slate-800">
-            Admin Dashboard
-          </Button>
-        </Link>
-      </div>
-
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639825752750-5061ded5503b?q=85')] bg-cover bg-center opacity-10"></div>
