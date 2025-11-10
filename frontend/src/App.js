@@ -425,58 +425,318 @@ function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6" data-testid="faq-section">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="faq-title">Frequently Asked Questions</h2>
-            <p className="text-lg text-slate-400">Everything you need to know about our EAs</p>
+      <section className="relative py-20 px-6 overflow-hidden" data-testid="faq-section">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-950/10 to-transparent pointer-events-none"></div>
+        <div className="absolute top-1/4 -left-64 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-64 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40 px-4 py-1.5 text-sm mb-4">
+              <Award className="w-4 h-4 inline mr-2" />
+              Got Questions? We've Got Answers
+            </Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="faq-title">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              Everything you need to know about our Expert Advisors, payment methods, and support
+            </p>
           </div>
+          
           <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="item-1" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-1">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What's the difference between the three EA packages?</AccordionTrigger>
-              <AccordionContent className="text-slate-400">
-                <strong className="text-white">Low Risk EA ($90):</strong> Conservative strategy with 1% risk per trade, 6.5% monthly returns, 89.2% win rate. Best for beginners and capital preservation.<br/><br/>
-                <strong className="text-white">Moderate Risk EA ($150):</strong> Balanced approach with 2% risk per trade, 15.2% monthly returns, 85.7% win rate. Ideal for steady growth.<br/><br/>
-                <strong className="text-white">High Risk EA ($200):</strong> Aggressive strategy with 3-5% risk per trade, 32.8% monthly returns, 82.4% win rate. For experienced traders seeking maximum profits.
+            {/* FAQ Item 1 */}
+            <AccordionItem 
+              value="item-1" 
+              className="group bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl px-6 py-2 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10" 
+              data-testid="faq-item-1"
+            >
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left font-semibold text-lg py-6 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                    <BarChart3 className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <span>What's the difference between the three EA packages?</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-300 pl-16 pr-4 pb-6 leading-relaxed">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3 p-4 bg-blue-500/5 rounded-lg border border-blue-500/20">
+                    <Shield className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <strong className="text-white block mb-1">Low Risk EA ($90)</strong>
+                      <p className="text-sm">Conservative strategy with 1% risk per trade, 6.5% monthly returns, 89.2% win rate. Best for beginners and capital preservation.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 p-4 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
+                    <TrendingUp className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <strong className="text-white block mb-1">Moderate Risk EA ($150)</strong>
+                      <p className="text-sm">Balanced approach with 2% risk per trade, 15.2% monthly returns, 85.7% win rate. Ideal for steady growth.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 p-4 bg-orange-500/5 rounded-lg border border-orange-500/20">
+                    <Zap className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <strong className="text-white block mb-1">High Risk EA ($200)</strong>
+                      <p className="text-sm">Aggressive strategy with 3-5% risk per trade, 32.8% monthly returns, 82.4% win rate. For experienced traders seeking maximum profits.</p>
+                    </div>
+                  </div>
+                </div>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-2">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What cryptocurrencies do you accept?</AccordionTrigger>
-              <AccordionContent className="text-slate-400">
-                We accept USDT (TRC20), USDT (BEP20), TRX (Tron), BTC (Bitcoin), ETH (Ethereum), and BNB (Binance Coin). After selecting your EA package, choose your preferred cryptocurrency, send payment to the displayed wallet address, and submit your transaction hash.
+
+            {/* FAQ Item 2 */}
+            <AccordionItem 
+              value="item-2" 
+              className="group bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl px-6 py-2 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10" 
+              data-testid="faq-item-2"
+            >
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left font-semibold text-lg py-6 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                    <DollarSign className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <span>What cryptocurrencies do you accept?</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-300 pl-16 pr-4 pb-6 leading-relaxed">
+                <p className="mb-4">We accept multiple cryptocurrencies for maximum flexibility:</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {PAYMENT_METHODS.map((method) => (
+                    <div key={method.value} className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-lg border border-slate-700/50">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                      <div>
+                        <p className="text-white text-sm font-medium">{method.label}</p>
+                        <p className="text-xs text-slate-500">{method.network}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-4 text-sm">Simply select your preferred cryptocurrency, send payment to the displayed wallet address (with QR code), and submit your transaction hash for instant verification.</p>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-3">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">How long does delivery take?</AccordionTrigger>
-              <AccordionContent className="text-slate-400">
-                EA files are delivered to your email within 24 hours after we verify your crypto payment. You'll receive installation instructions, setup guide, and your license key via email. For urgent delivery, contact us on Telegram @hchdjd.
+
+            {/* FAQ Item 3 */}
+            <AccordionItem 
+              value="item-3" 
+              className="group bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl px-6 py-2 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10" 
+              data-testid="faq-item-3"
+            >
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left font-semibold text-lg py-6 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                    <Clock className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <span>How long does delivery take?</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-300 pl-16 pr-4 pb-6 leading-relaxed">
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-emerald-400 text-xs font-bold">1</span>
+                    </div>
+                    <p><strong className="text-white">Payment Verification:</strong> Instant blockchain verification using our automated system</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-emerald-400 text-xs font-bold">2</span>
+                    </div>
+                    <p><strong className="text-white">EA Delivery:</strong> Within 24 hours to your email with installation guide and license key</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-emerald-400 text-xs font-bold">3</span>
+                    </div>
+                    <p><strong className="text-white">Urgent Delivery:</strong> Contact @hchdjd on Telegram for expedited processing</p>
+                  </div>
+                </div>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-4" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-4">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">Do I need trading experience?</AccordionTrigger>
-              <AccordionContent className="text-slate-400">
-                No experience required! All our EAs are fully automated. Simply install on MT4/MT5, configure your risk settings (we provide recommended settings), and the EA handles everything. We include a detailed setup guide and offer support via Telegram @hchdjd.
+
+            {/* FAQ Item 4 */}
+            <AccordionItem 
+              value="item-4" 
+              className="group bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl px-6 py-2 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10" 
+              data-testid="faq-item-4"
+            >
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left font-semibold text-lg py-6 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                    <Award className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <span>Do I need trading experience?</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-300 pl-16 pr-4 pb-6 leading-relaxed">
+                <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/30 rounded-lg p-4 mb-4">
+                  <p className="text-white font-semibold mb-2">✨ No Experience Required!</p>
+                  <p className="text-sm">Our EAs are fully automated and beginner-friendly. Perfect for both new and experienced traders.</p>
+                </div>
+                <p>Simply install on MT4/MT5, configure your risk settings (we provide recommended settings), and the EA handles everything automatically. We include:</p>
+                <ul className="mt-3 space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <span>Detailed setup guide</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <span>Video tutorial</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <span>24/7 Telegram support @hchdjd</span>
+                  </li>
+                </ul>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-5" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-5">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">How do I install the EA?</AccordionTrigger>
-              <AccordionContent className="text-slate-400">
-                Simple 4-step process: 1) Download the EA file from your email, 2) Copy it to your MT4/MT5 'Experts' folder, 3) Restart your trading platform, 4) Drag the EA onto your chart and enable auto-trading. Full video tutorial included with purchase. Support available on Telegram @hchdjd.
+
+            {/* FAQ Item 5 */}
+            <AccordionItem 
+              value="item-5" 
+              className="group bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl px-6 py-2 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10" 
+              data-testid="faq-item-5"
+            >
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left font-semibold text-lg py-6 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                    <Activity className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <span>How do I install the EA?</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-300 pl-16 pr-4 pb-6 leading-relaxed">
+                <p className="mb-4 text-white font-medium">Simple 4-step installation process:</p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4 p-4 bg-slate-800/30 rounded-lg border border-slate-700/50">
+                    <div className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                    <div>
+                      <p className="text-white font-medium mb-1">Download EA file</p>
+                      <p className="text-sm text-slate-400">Get the file from your email after payment verification</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4 p-4 bg-slate-800/30 rounded-lg border border-slate-700/50">
+                    <div className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                    <div>
+                      <p className="text-white font-medium mb-1">Copy to Experts folder</p>
+                      <p className="text-sm text-slate-400">Place file in your MT4/MT5 'Experts' directory</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4 p-4 bg-slate-800/30 rounded-lg border border-slate-700/50">
+                    <div className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                    <div>
+                      <p className="text-white font-medium mb-1">Restart platform</p>
+                      <p className="text-sm text-slate-400">Restart MT4/MT5 to load the new EA</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4 p-4 bg-slate-800/30 rounded-lg border border-slate-700/50">
+                    <div className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">4</div>
+                    <div>
+                      <p className="text-white font-medium mb-1">Activate & Trade</p>
+                      <p className="text-sm text-slate-400">Drag EA onto chart, enable auto-trading, and you're done!</p>
+                    </div>
+                  </div>
+                </div>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-6" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-6">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">What if I need help or have issues?</AccordionTrigger>
-              <AccordionContent className="text-slate-400">
-                Contact us directly on Telegram @hchdjd for instant support. We help with installation, configuration, optimization, and any technical issues. Our support team responds quickly and ensures you get the most out of your EA.
+
+            {/* FAQ Item 6 */}
+            <AccordionItem 
+              value="item-6" 
+              className="group bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl px-6 py-2 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10" 
+              data-testid="faq-item-6"
+            >
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left font-semibold text-lg py-6 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                    <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                    </svg>
+                  </div>
+                  <span>What if I need help or have issues?</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-300 pl-16 pr-4 pb-6 leading-relaxed">
+                <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-lg p-5">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-2">24/7 Priority Support on Telegram</p>
+                      <p className="text-sm mb-3">Contact us directly at <a href="https://t.me/hchdjd" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">@hchdjd</a> for instant support</p>
+                      <div className="space-y-2">
+                        <p className="text-sm flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                          Installation assistance
+                        </p>
+                        <p className="text-sm flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                          Configuration & optimization
+                        </p>
+                        <p className="text-sm flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                          Technical troubleshooting
+                        </p>
+                        <p className="text-sm flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                          Trading strategy guidance
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-7" className="bg-slate-900/50 backdrop-blur-sm border-slate-700/50 rounded-lg px-6" data-testid="faq-item-7">
-              <AccordionTrigger className="text-white hover:text-emerald-400 text-left">Can I use one EA on multiple accounts?</AccordionTrigger>
-              <AccordionContent className="text-slate-400">
-                Each license covers one MT4/MT5 account. If you need to use the EA on multiple accounts, contact us on Telegram @hchdjd for multi-license discounts. We offer special pricing for traders managing multiple accounts.
+
+            {/* FAQ Item 7 */}
+            <AccordionItem 
+              value="item-7" 
+              className="group bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-sm border-2 border-slate-700/50 rounded-2xl px-6 py-2 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10" 
+              data-testid="faq-item-7"
+            >
+              <AccordionTrigger className="text-white hover:text-emerald-400 text-left font-semibold text-lg py-6 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                    <Shield className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <span>Can I use one EA on multiple accounts?</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-300 pl-16 pr-4 pb-6 leading-relaxed">
+                <p className="mb-4">Each license covers <strong className="text-white">one MT4/MT5 trading account</strong>.</p>
+                <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-4">
+                  <p className="text-amber-200 text-sm">
+                    <strong>Managing Multiple Accounts?</strong> We offer special multi-license discounts!
+                  </p>
+                </div>
+                <p className="text-sm">Contact us on Telegram <a href="https://t.me/hchdjd" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">@hchdjd</a> for volume pricing if you need to use the EA across multiple trading accounts.</p>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+
+          {/* Still have questions CTA */}
+          <div className="mt-12 text-center">
+            <Card className="bg-gradient-to-br from-emerald-900/30 to-teal-900/30 border-emerald-500/30 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-white mb-3">Still Have Questions?</h3>
+                <p className="text-slate-300 mb-6">Our support team is ready to help you 24/7</p>
+                <Button 
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg rounded-full"
+                  onClick={() => window.open('https://t.me/hchdjd', '_blank')}
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                  </svg>
+                  Contact Support on Telegram
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
