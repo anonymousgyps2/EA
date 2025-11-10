@@ -263,6 +263,104 @@ function App() {
         </section>
       )}
 
+      {/* Live Trading Demo Section */}
+      <section className="py-20 px-6 bg-slate-900/30 relative overflow-hidden" data-testid="demo-section">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-950/20 to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40 px-4 py-1.5 text-sm mb-4">
+              <Activity className="w-4 h-4 inline mr-2" />
+              Real Trading Results
+            </Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" data-testid="demo-title">
+              See Our EA In Action
+            </h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              Watch real-time trading on MT5 mobile. This is actual footage of our Expert Advisor executing trades automatically.
+            </p>
+          </div>
+
+          <Card className="bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-lg border-2 border-emerald-500/30 overflow-hidden shadow-2xl shadow-emerald-500/20">
+            <CardContent className="p-0">
+              <div className="relative aspect-video bg-slate-950">
+                <video 
+                  className="w-full h-full object-contain"
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3Crect fill='%230f172a' width='1200' height='675'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%2310b981' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3ELoading Trading Demo...%3C/text%3E%3C/svg%3E"
+                >
+                  <source src="https://litter.catbox.moe/ti4krkzm8b7crxl9.MP4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                
+                {/* Play overlay hint */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none flex items-end justify-center pb-6">
+                  <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                    </svg>
+                    <span>Live MT5 Mobile Trading</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Video info bar */}
+              <div className="bg-slate-900/50 border-t border-slate-700/50 p-6">
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-1">100% Automated</p>
+                      <p className="text-sm text-slate-400">No manual intervention needed</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Activity className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-1">Real-Time Execution</p>
+                      <p className="text-sm text-slate-400">Lightning fast trade entries</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Shield className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-1">Risk Management</p>
+                      <p className="text-sm text-slate-400">Automatic stop-loss protection</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* CTA under video */}
+          <div className="mt-8 text-center">
+            <p className="text-slate-300 mb-4">Ready to automate your trading?</p>
+            <Button 
+              size="lg" 
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-emerald-500/50 transition-all hover:scale-105"
+              onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <TrendingUp className="w-5 h-5 mr-2" />
+              Choose Your EA Package
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-20 px-6" data-testid="features-section">
         <div className="max-w-7xl mx-auto">
