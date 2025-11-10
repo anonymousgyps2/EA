@@ -840,7 +840,7 @@ function App() {
       <footer className="py-12 px-6 border-t border-slate-800" data-testid="footer">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6">
-            <p className="text-slate-400 mb-2">© 2025 ScalpMaster Pro EA. All rights reserved.</p>
+            <p className="text-slate-400 mb-2">© 2025 VELTRION EA. All rights reserved.</p>
             <p className="text-slate-500 text-sm mb-4">Trading involves risk. Past performance is not indicative of future results.</p>
             <div className="flex items-center justify-center gap-3">
               <span className="text-slate-400 text-sm">Product Support:</span>
