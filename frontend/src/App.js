@@ -177,24 +177,12 @@ function App() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639825752750-5061ded5503b?q=85')] bg-cover bg-center opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-6 py-24 sm:py-32">
           <div className="text-center space-y-8">
-            {/* Brand Logo */}
-            <div className="mb-6 flex justify-center">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                <div className="relative bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl border-2 border-emerald-500/30 rounded-2xl px-8 py-4 flex items-center gap-4">
-                  <img 
-                    src="https://images.unsplash.com/photo-1639327380081-bf86fc57a7a5?q=80&w=200" 
-                    alt="VELTRION EA Logo" 
-                    className="w-12 h-12 object-contain"
-                  />
-                  <div>
-                    <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-400 bg-clip-text text-transparent tracking-tight">
-                      VELTRION EA
-                    </h1>
-                    <p className="text-xs text-slate-400 tracking-widest uppercase">Expert Advisor</p>
-                  </div>
-                </div>
-              </div>
+            {/* Brand Name */}
+            <div className="mb-6">
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-400 bg-clip-text text-transparent tracking-tight" data-testid="brand-name">
+                VELTRION EA
+              </h1>
+              <p className="text-sm text-slate-400 tracking-widest uppercase mt-2">Professional Expert Advisor</p>
             </div>
             
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/40 px-4 py-1.5 text-sm" data-testid="hero-badge">
