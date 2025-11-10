@@ -211,8 +211,8 @@ class PaymentVerifier:
             return False, f"No payment found to specified {coin_name} address", None
             
         except Exception as e:
-            logger.error(f"Bitcoin verification error: {str(e)}")
-            return False, f"Bitcoin verification failed: {str(e)}", None
+            logger.error(f"{coin_type} verification error: {str(e)}")
+            return False, f"{coin_type} verification failed: {str(e)}", None
     
     async def _verify_eth_based_transaction(
         self, tx_hash: str, payment_method: str, expected_amount: float, wallet_address: str
