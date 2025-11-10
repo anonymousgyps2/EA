@@ -52,15 +52,15 @@ class PaymentVerifier:
         Returns: (success, message, transaction_details)
         """
         try:
-            if payment_method in ["TRC20_USDT", "TRX"]:
+            if payment_method == "TRX":
                 return await self._verify_tron_transaction(
                     transaction_hash, payment_method, expected_amount, wallet_address
                 )
-            elif payment_method == "BTC":
+            elif payment_method in ["BTC", "LTC"]:
                 return await self._verify_bitcoin_transaction(
-                    transaction_hash, expected_amount, wallet_address
+                    transaction_hash, expected_amount, wallet_address, payment_method
                 )
-            elif payment_method in ["ETH", "BEP20_USDT", "BNB"]:
+            elif payment_method in ["ETH", "USDT_ETH", "USDT_BSC", "BNB", "SOL"]:
                 return await self._verify_eth_based_transaction(
                     transaction_hash, payment_method, expected_amount, wallet_address
                 )
