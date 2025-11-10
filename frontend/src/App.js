@@ -61,9 +61,48 @@ function App() {
   const [currentOrderId, setCurrentOrderId] = useState(null);
   const [verifying, setVerifying] = useState(false);
   const [verificationResult, setVerificationResult] = useState(null);
+  
+  // Countdown timer state
+  const [timeRemaining, setTimeRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  // Countdown timer - resets every 2 days in UTC+5
+  useEffect(() => {
+    const calculateTimeRemaining = () => {
+      const now = new Date();
+      const utcPlus5 = new Date(now.getTime() + (5 * 60 * 60 * 1000)); // Convert to UTC+5
+      
+      // Get current time in UTC+5
+      const currentTime = utcPlus5.getTime();
+      
+      // Calculate next reset time (every 2 days from epoch in UTC+5)
+      const twoDaysMs = 2 * 24 * 60 * 60 * 1000;
+      const epochUtcPlus5 = 5 * 60 * 60 * 1000; // Epoch offset for UTC+5
+      const timeSinceEpoch = currentTime - epochUtcPlus5;
+      const nextResetTime = Math.ceil(timeSinceEpoch / twoDaysMs) * twoDaysMs + epochUtcPlus5;
+      
+      const diff = nextResetTime - currentTime;
+      
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        setTimeRemaining({ days, hours, minutes, seconds });
+      } else {
+        // Reset when countdown reaches 0
+        setTimeRemaining({ days: 2, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    calculateTimeRemaining();
+    const interval = setInterval(calculateTimeRemaining, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const fetchData = async () => {
