@@ -208,7 +208,7 @@ class PaymentVerifier:
                     
                     return True, f"{coin_name} payment verified successfully", tx_details
             
-            return False, "No payment found to specified Bitcoin address", None
+            return False, f"No payment found to specified {coin_name} address", None
             
         except Exception as e:
             logger.error(f"Bitcoin verification error: {str(e)}")
