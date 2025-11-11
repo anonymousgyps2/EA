@@ -349,7 +349,7 @@ function App() {
                   playsInline
                   poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3Crect fill='%230f172a' width='1200' height='675'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%2310b981' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3ELoading Trading Demo...%3C/text%3E%3C/svg%3E"
                 >
-                  <source src="https://litter.catbox.moe/ti4krkzm8b7crxl9.MP4" type="video/mp4" />
+                  <source src="https://customer-assets.emergentagent.com/job_payment-check-5/artifacts/joj1sw1x_1762803118493095.MP4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 
